@@ -20,7 +20,7 @@
                     // stats
                     break;
                 case "2":
-                    // move
+                    Move();
                     break;
                 case "3":
                     // Fight
@@ -30,5 +30,49 @@
                     break;
             }
         }
+    }
+    
+    // Move functionality
+    public static  void Move() {
+        string UserAction;
+        do
+        {   
+            // Prints UI
+            Console.WriteLine("Where would you like to go?");
+            Console.WriteLine($"You are at: {player.CurrentLocation.Name}. From here you can go:");
+            DisplayCompass();
+            UserAction  = (Console.ReadLine() ?? "").ToLower();
+
+            // Checks for which direction and if possible, set current location to the correct location
+            switch (UserAction)
+            {
+                case "n":
+                    if (player.CurrentLocation.LocationToNorth != null) {
+                        player.CurrentLocation = player.CurrentLocation.LocationToNorth;
+                    }
+                    break;
+                case "e":
+                    if (player.CurrentLocation.LocationToEast != null) {
+                        player.CurrentLocation = player.CurrentLocation.LocationToEast;
+                    }
+                    break;
+                case "s":
+                    if (player.CurrentLocation.LocationToSouth != null) {
+                        player.CurrentLocation = player.CurrentLocation.LocationToSouth;
+                    }
+                    break;
+                case "w":
+                    if (player.CurrentLocation.LocationToWest != null) {
+                        player.CurrentLocation = player.CurrentLocation.LocationToWest;
+                    }
+                    break;
+            }
+        } while (UserAction != "n" && UserAction != "e" && UserAction != "s" && UserAction != "w");
+
+    }
+
+    public static void DisplayCompass() {
+        // Possible direction compass here
+        Console.WriteLine("Direction Compass not yet implemented. From Home you can go (N)orth");
     }
 }
