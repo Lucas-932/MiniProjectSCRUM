@@ -7,6 +7,7 @@
         running = true;
 
         while (running) {
+            CheckWinCondition();
             Console.WriteLine("What would you like to do (Enter a number)?");
             Console.WriteLine("1: See game stats");
             Console.WriteLine("2: Move");
@@ -33,6 +34,21 @@
         }
     }
 
+    // checks if the quests have the boolean Completed to true and if one quest doesn't fail Wincondition
+    public static void CheckWinCondition() {
+        bool questsUncleared = false;
+        foreach (Quest quest in World.Quests) {
+            if (!quest.Completed) {
+                questsUncleared = true;
+            }
+        }
+        
+        if (questsUncleared) {
+            running = false;
+            Console.WriteLine("You have won the game!");
+        }
+    }
+    
     // Move functionality
     public static  void Move() {
         bool moved;
