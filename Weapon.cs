@@ -1,12 +1,13 @@
-public static class Weapon
+public class Weapon
 {
-    int ID = ID;
-    int MaximumDamage = MaximumDamage;
-    string Name = Name;
-    public static string Weapon()
+    public int ID;
+    public string Name;
+    public int MaximumDamage;
+    
+    public Weapon(int ID, string Name, int MaximumDamage)
     {
-        this.ID;
-        this.MaximumDamage;
-        this.Name;
+        this.ID = ID;
+        this.Name = Name;
+        this.MaximumDamage = MaximumDamage;
     }
 }

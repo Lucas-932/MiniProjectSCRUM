@@ -1,16 +1,18 @@
-public static class Monster
+public class Monster
 {
-    int CurrentHitPoints = CurrentHitPoints;
-    int ID = ID;
-    int MaximumDamage = MaximumDamage;
-    int MaximumHitPoints = MaximumHitPoints;
-    string Name = Name;
-    public static string Monster()
+    public int ID;
+    public int MaximumDamage;
+    public int CurrentHitPoints;
+    public int MaximumHitPoints;
+    public string Name;
+    
+    public Monster(int ID, string Name, int MaximumDamage, int CurrentHitPoints, int MaximumHitPoints)
     {
-        this.CurrentHitPoints;
-        this.ID;
-        this.MaximumDamage;
-        this.MaximumHitPoints
-        this.Name;
+        
+        this.ID = ID;
+        this.Name = Name;
+        this.MaximumDamage = MaximumDamage;
+        this.CurrentHitPoints = CurrentHitPoints;
+        this.MaximumHitPoints = MaximumHitPoints;
     }
 }

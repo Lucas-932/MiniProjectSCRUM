@@ -1,10 +1,11 @@
-public static class SuperAdventure
+public class SuperAdventure
 {
-    string CurrentMonster = CurrentMonster;
-    string ThePlayer = ThePlayer;
-    public static string SuperAdventure()
+    public Monster CurrentMonster;
+    public Player ThePlayer;
+
+    public SuperAdventure(Monster CurrentMonster, Player ThePlayer)
     {
-        this.CurrentMonster;
-        this.ThePlayer;
+        this.CurrentMonster = CurrentMonster;
+        this.ThePlayer = ThePlayer;
     }
 }

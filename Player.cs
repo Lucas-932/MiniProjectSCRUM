@@ -1,15 +1,18 @@
-public static class Player
+public class Player
 {
-    int CurrentHitPoints = CurrentHitPoints;
-    string CurrentLocation = CurrentLocation;
-    string CurrentWeapon = CurrentWeapon;
-    int MaximumHitpoints = MaximumHitpoints;
-    string Name = Name;
-    public static string Player()
+    public string Name;
+    public Location CurrentLocation;
+    public Weapon CurrentWeapon;
+    public int MaximumHitPoints;
+    public int CurrentHitPoints;
+
+    public Player(string Name, Location CurrentLocation, Weapon CurrentWeapon, int MaximumHitPoints, int CurrentHitPoints)
     {
-        this.CurrentHitPoints;
-        this.CurrentLocation;
-        this.CurrentWeapon;
-        this.MaximumHitpoints;
+        this.Name = Name;
+        this.CurrentLocation = CurrentLocation;
+        this.CurrentWeapon = CurrentWeapon;
+        this.MaximumHitPoints = MaximumHitPoints;
+        this.CurrentHitPoints = CurrentHitPoints;
+        
     }
 }

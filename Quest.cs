@@ -1,12 +1,13 @@
-public static class Quest
+public class Quest
 {
-    string Description = Description;
-    int ID = ID;
-    string Name = Name;
-    public static string Quest(Description, ID, Name)
+    public int ID;
+    public string Name;
+    public string Description;
+
+    public Quest(int ID, string Name, string Description)
     {
-        this.Description;
-        this.ID;
-        this.Name;
+        this.ID = ID;
+        this.Name = Name;
+        this.Description = Description;
     }
 }
