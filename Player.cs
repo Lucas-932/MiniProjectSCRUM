@@ -52,6 +52,6 @@ public class Player
                 ? $"You see a {CurrentLocation.MonsterLivingHere.Name}." 
                 : "You see no monsters here."
         );
-        Console.WriteLine($"You are at {CurrentHitPoints}/{MaximumHitPoints} Health");
+        Console.WriteLine($"You have {CurrentHitPoints} out of {MaximumHitPoints} HP left");
     }
 }

@@ -1,9 +1,10 @@
 ﻿public class Program
 {
     public static Player player = new("bob", World.LocationByID(1), World.WeaponByID(1), 5, 5);
+    public static bool running;
     public static void Main()
     {
-        bool running = true;
+        running = true;
 
         while (running) {
             Console.WriteLine("What would you like to do (Enter a number)?");
@@ -23,7 +24,7 @@
                     Move();
                     break;
                 case "3":
-                    // Fight();
+                    Fight();
                     break;
                 case "4":
                     // quit
@@ -31,7 +32,7 @@
             }
         }
     }
-    
+
     // Move functionality
     public static  void Move() {
         bool moved;
@@ -59,5 +60,24 @@
 
         Console.WriteLine("\nPress ENTER to continue");
         Console.ReadLine();
+    }
+
+    // Checks if there is a fight and sets up the fight
+    public static void Fight() {
+        Monster CurrentMonster = player.CurrentLocation.MonsterLivingHere;
+        if (CurrentMonster == null) {
+            Console.WriteLine("There are no Monsters to fight here.");
+        } else if (CurrentMonster.CurrentHitPoints <= 0) {
+            Console.WriteLine("You have already slain all the Monsters.");
+        } else {
+            SuperAdventure FightingEncounter = new(CurrentMonster, player);
+            bool result = FightingEncounter.StartFight();
+            if (result) {
+                Console.WriteLine($"You defeated the {CurrentMonster.Name}");
+            } else {
+                Console.WriteLine("You have died!");
+                running = false;
+            }
+        }
     }
 }
