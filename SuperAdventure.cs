@@ -25,18 +25,22 @@ public class SuperAdventure
                 CurrentMonster.CurrentHitPoints -= PlayerHit;
             }
             // display monster health
-            Console.WriteLine($"The {CurrentMonster.Name} has {CurrentMonster.MaximumHitPoints} out of {CurrentMonster.CurrentHitPoints} HP left");
+            Console.WriteLine($"The {CurrentMonster.Name} has {CurrentMonster.CurrentHitPoints} out of {CurrentMonster.MaximumHitPoints} HP left");
 
-            Console.WriteLine();
-
-            // if monster damage is more than zero do damage
-            if (MonsterHit == 0) {
-                Console.WriteLine($"The {CurrentMonster.Name} missed you");
-            } else {
-                Console.WriteLine($"The {CurrentMonster.Name} did {MonsterHit} points of damage!");
-                ThePlayer.CurrentHitPoints -= MonsterHit;
+            if (CurrentMonster.CurrentHitPoints > 0) {
+                Console.WriteLine();
+                // if monster damage is more than zero do damage
+                if (MonsterHit == 0) {
+                    Console.WriteLine($"The {CurrentMonster.Name} missed you");
+                } else {
+                    Console.WriteLine($"The {CurrentMonster.Name} did {MonsterHit} points of damage!");
+                    ThePlayer.CurrentHitPoints -= MonsterHit;
+                }
+                Console.WriteLine($"You have {ThePlayer.CurrentHitPoints} out of {ThePlayer.MaximumHitPoints} HP left");
             }
-            Console.WriteLine($"You have {ThePlayer.CurrentHitPoints} out of {ThePlayer.MaximumHitPoints} HP left");
+
+            Console.WriteLine("Press ENTER to continue");
+            Console.ReadLine();
         }
 
         // return true if the monster is the one who died

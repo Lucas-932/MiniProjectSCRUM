@@ -44,7 +44,7 @@
             }
         }
         
-        if (questsUncleared) {
+        if (!questsUncleared) {
             running = false;
             Console.WriteLine("You have won the game!");
         }
