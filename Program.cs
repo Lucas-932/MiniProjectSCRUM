@@ -1,4 +1,4 @@
-public class Program
+﻿public class Program
 {
     public static Player player = new("bob", World.LocationByID(1), World.WeaponByID(1), 5, 5);
     public static bool running;
@@ -28,15 +28,16 @@ public class Program
                     Fight();
                     break;
                 case "4":
-                    // quit
+                    running = false;
+                    Console.WriteLine("Thanks for playing!");
                     break;
+                    
             }
 
             CheckWinCondition();
         }
     }
 
-    // checks if the quests have the boolean Completed to true and if one quest doesn't fail Wincondition
     public static void CheckWinCondition()
     {
         bool questsUncleared = false;
@@ -61,13 +62,10 @@ public class Program
         bool moved;
         do
         {
-            // Prints UI
             Console.WriteLine("Where would you like to go?");
             Console.WriteLine($"You are at: {player.CurrentLocation.Name}. From here you can go:");
             DisplayCompass();
             string UserAction = (Console.ReadLine() ?? "").ToLower();
-
-            // Checks for which direction and if possible, set current location to the correct location
             moved = player.Move(UserAction);
         } while (!moved);
     }
@@ -75,13 +73,21 @@ public class Program
     public static void DisplayCompass()
     {
         if (player.CurrentLocation.LocationToNorth != null)
-            Console.WriteLine("(N)orth");
+        {
+            Console.WriteLine($"(N)orth: {player.CurrentLocation.LocationToNorth.Name}");
+        }
         if (player.CurrentLocation.LocationToWest != null)
-            Console.WriteLine("(W)est");
+        {
+            Console.WriteLine($"(W)est: {player.CurrentLocation.LocationToWest.Name}");
+        }
         if (player.CurrentLocation.LocationToEast != null)
-            Console.WriteLine("(E)ast");
+        {
+            Console.WriteLine($"(E)ast: {player.CurrentLocation.LocationToEast.Name}");
+        }
         if (player.CurrentLocation.LocationToSouth != null)
-            Console.WriteLine("(S)outh");
+        {
+            Console.WriteLine($"(S)outh: {player.CurrentLocation.LocationToSouth.Name}");
+        }
     }
 
 
