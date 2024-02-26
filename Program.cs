@@ -90,13 +90,12 @@ public class Program
     {
         player.DisplayStats();
         Console.WriteLine("Quest Lines:");
-        foreach (Quest quest in World.Quests)
+        Quest currentLocationQuest = player.CurrentLocation.QuestAvailableHere;
+        if (currentLocationQuest != null && !currentLocationQuest.Completed)
         {
-            if (!quest.Completed)
-            {
-                Console.WriteLine(quest.sayingLine);
-            }
+            Console.WriteLine(currentLocationQuest.sayingLine);
         }
+
         World.PopulateQuests();
 
         Console.WriteLine("\nPress ENTER to continue");
