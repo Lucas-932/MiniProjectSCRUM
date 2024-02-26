@@ -1,20 +1,21 @@
-﻿public class Program
+public class Program
 {
     public static Player player = new("bob", World.LocationByID(1), World.WeaponByID(1), 5, 5);
     public static bool running;
     public static void Main()
     {
         running = true;
- 
-        while (running) {
+
+        while (running)
+        {
             Console.WriteLine("What would you like to do (Enter a number)?");
             Console.WriteLine("1: See game stats");
             Console.WriteLine("2: Move");
             Console.WriteLine("3: Fight");
             Console.WriteLine("4: Quit");
- 
+
             string UserAction = Console.ReadLine() ?? "";
- 
+
             switch (UserAction)
             {
                 case "1":
@@ -30,28 +31,33 @@
                     // quit
                     break;
             }
- 
+
             CheckWinCondition();
         }
     }
- 
+
     // checks if the quests have the boolean Completed to true and if one quest doesn't fail Wincondition
-    public static void CheckWinCondition() {
+    public static void CheckWinCondition()
+    {
         bool questsUncleared = false;
-        foreach (Quest quest in World.Quests) {
-            if (!quest.Completed) {
+        foreach (Quest quest in World.Quests)
+        {
+            if (!quest.Completed)
+            {
                 questsUncleared = true;
             }
         }
-       
-        if (!questsUncleared) {
+
+        if (!questsUncleared)
+        {
             running = false;
             Console.WriteLine("You have won the game!");
         }
     }
-   
+
     // Move functionality
-    public static  void Move() {
+    public static void Move()
+    {
         bool moved;
         do
         {
@@ -59,13 +65,13 @@
             Console.WriteLine("Where would you like to go?");
             Console.WriteLine($"You are at: {player.CurrentLocation.Name}. From here you can go:");
             DisplayCompass();
-            string UserAction  = (Console.ReadLine() ?? "").ToLower();
- 
+            string UserAction = (Console.ReadLine() ?? "").ToLower();
+
             // Checks for which direction and if possible, set current location to the correct location
             moved = player.Move(UserAction);
         } while (!moved);
     }
- 
+
     public static void DisplayCompass()
     {
         if (player.CurrentLocation.LocationToNorth != null)
@@ -77,29 +83,48 @@
         if (player.CurrentLocation.LocationToSouth != null)
             Console.WriteLine("(S)outh");
     }
- 
- 
+
+
     // Display all current stats
-    public static void DisplayStats() {
+    public static void DisplayStats()
+    {
         player.DisplayStats();
- 
+        Console.WriteLine("Quest Lines:");
+        foreach (Quest quest in World.Quests)
+        {
+            if (!quest.Completed)
+            {
+                Console.WriteLine(quest.sayingLine);
+            }
+        }
+        World.PopulateQuests();
+
         Console.WriteLine("\nPress ENTER to continue");
         Console.ReadLine();
     }
- 
+
     // Checks if there is a fight and sets up the fight
-    public static void Fight() {
+    public static void Fight()
+    {
         Monster CurrentMonster = player.CurrentLocation.MonsterLivingHere;
-        if (CurrentMonster == null) {
+        if (CurrentMonster == null)
+        {
             Console.WriteLine("There are no Monsters to fight here.");
-        } else if (CurrentMonster.CurrentHitPoints <= 0) {
+        }
+        else if (CurrentMonster.CurrentHitPoints <= 0)
+        {
             Console.WriteLine("You have already slain all the Monsters.");
-        } else {
+        }
+        else
+        {
             SuperAdventure FightingEncounter = new(CurrentMonster, player);
             bool result = FightingEncounter.StartFight();
-            if (result) {
+            if (result)
+            {
                 Console.WriteLine($"You defeated the {CurrentMonster.Name}");
-            } else {
+            }
+            else
+            {
                 Console.WriteLine("You have died!");
                 running = false;
             }

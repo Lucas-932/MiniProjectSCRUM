@@ -64,23 +64,23 @@
             new Quest(
                 QUEST_ID_CLEAR_ALCHEMIST_GARDEN,
                 "Clear the alchemist's garden",
-                "Kill rats in the alchemist's garden ");
-
-
+                "Kill rats in the alchemist's garden",
+                "Alchemist: 'Those rats art nibbling on mine own h'rbs!\nI couldst very much useth an adventur'r to taketh careth of those folk…'");
 
         Quest clearFarmersField =
             new Quest(
                 QUEST_ID_CLEAR_FARMERS_FIELD,
                 "Clear the farmer's field",
-                "Kill snakes in the farmer's field");
-
+                "Kill snakes in the farmer's field",
+                "Farmer: 'I can't w'rk mine own landeth with those pesky snakes slith'ring 'round!\nShall thee holp me?'");
 
         Quest clearSpidersForest =
                     new Quest(
                         QUEST_ID_COLLECT_SPIDER_SILK,
                         "Collect spider silk",
-                        "Kill spiders in the spider forest");
-
+                        "Kill spiders in the spider forest",
+                        "You: 'I shalt releaseth the town folks of their feareth!'"
+                        );
 
         Quests.Add(clearAlchemistGarden);
         Quests.Add(clearFarmersField);
