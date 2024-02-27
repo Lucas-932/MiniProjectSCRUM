@@ -1,6 +1,6 @@
 ﻿public class Program
 {
-    public static Player player = new("bob", World.LocationByID(1), World.WeaponByID(1), 5, 5);
+    public static Player player = new("bob", World.LocationByID(1), World.WeaponByID(1), 10, 10);
     public static bool running;
     public static void Main()
     {
@@ -56,7 +56,6 @@
         }
     }
 
-    // Move functionality
     public static void Move()
     {
         bool moved;
@@ -95,20 +94,46 @@
     public static void DisplayStats()
     {
         player.DisplayStats();
-        Console.WriteLine("Quest Lines:");
         Quest currentLocationQuest = player.CurrentLocation.QuestAvailableHere;
         if (currentLocationQuest != null && !currentLocationQuest.Completed)
         {
             Console.WriteLine(currentLocationQuest.sayingLine);
         }
+        if (player.CurrentHitPoints != 10)
+        {
+            Console.WriteLine("Would you like to heal?");
+            string? heal = Console.ReadLine();
 
+            if (heal == "yes")
+            {
+                int maxHealPotions = 3; 
+                if (maxHealPotions > 0) 
+                {
+                    Random rand = new Random();
+                    int maxHeal = 10 - player.CurrentHitPoints; 
+                    int amountToHeal = rand.Next(1, maxHeal + 1);
+                    
+                    
+                    player.CurrentHitPoints += amountToHeal;
+                    
+                    maxHealPotions -= 1;
+
+                    Console.WriteLine($"You have {maxHealPotions} left");
+                    Console.WriteLine($"You have been healed for {amountToHeal} hit points.");
+                }
+                else
+                {
+                    Console.WriteLine("You don't have any healing potions left.");
+                }
+            }
+        }
         World.PopulateQuests();
 
         Console.WriteLine("\nPress ENTER to continue");
         Console.ReadLine();
+
     }
 
-    // Checks if there is a fight and sets up the fight
     public static void Fight()
     {
         Monster CurrentMonster = player.CurrentLocation.MonsterLivingHere;
