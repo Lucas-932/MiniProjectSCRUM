@@ -118,7 +118,7 @@
                     
                     maxHealPotions -= 1;
 
-                    Console.WriteLine($"You have {maxHealPotions} left");
+                    Console.WriteLine($"You have {maxHealPotions} healpotions left");
                     Console.WriteLine($"You have been healed for {amountToHeal} hit points.");
                 }
                 else
