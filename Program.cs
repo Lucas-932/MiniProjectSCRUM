@@ -40,16 +40,9 @@
 
     public static void CheckWinCondition()
     {
-        bool questsUncleared = false;
-        foreach (Quest quest in World.Quests)
-        {
-            if (!quest.Completed)
-            {
-                questsUncleared = true;
-            }
-        }
+        bool anyIncompleteQuests = World.Quests.Any(quest => quest.Completed == false);
 
-        if (!questsUncleared)
+        if (!anyIncompleteQuests)
         {
             running = false;
             Console.WriteLine("You have won the game!");

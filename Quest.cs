@@ -4,7 +4,7 @@ public class Quest
     public string Name;
     public string Description;
     public string sayingLine;
-    public bool Completed = false;
+    public bool Completed;
 
     public Quest(int ID, string Name, string Description, string sayingLine)
     {
