@@ -18,5 +18,6 @@ public class Quest
     {
         Completed = true;
         Console.WriteLine($"Quest '{Name}' completed!");
+        Program.CheckWinCondition(); // check win condition when a quest is completed
     }
 }

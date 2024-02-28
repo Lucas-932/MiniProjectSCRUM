@@ -31,7 +31,7 @@
                     running = false;
                     Console.WriteLine("Thanks for playing!");
                     break;
-                    
+
             }
 
             CheckWinCondition();
@@ -106,19 +106,20 @@
 
             if (heal == "yes")
             {
-                int maxHealPotions = 3; 
-                if (maxHealPotions > 0) 
+                int maxHealPotions = 3;
+                if (maxHealPotions > 0)
                 {
                     Random rand = new Random();
-                    int maxHeal = 10 - player.CurrentHitPoints; 
+                    int maxHeal = 10 - player.CurrentHitPoints;
                     int amountToHeal = rand.Next(1, maxHeal + 1);
-                    
-                    
+
+
                     player.CurrentHitPoints += amountToHeal;
-                    
+
                     maxHealPotions -= 1;
 
-                    Console.WriteLine($"You have {maxHealPotions} healpotions left");
+                    Console.WriteLine($"You have {maxHealPotions} poitions left");
+
                     Console.WriteLine($"You have been healed for {amountToHeal} hit points.");
                 }
                 else
@@ -152,6 +153,13 @@
             if (result)
             {
                 Console.WriteLine($"You defeated the {CurrentMonster.Name}");
+                Console.WriteLine("Quest Completed!");
+                Quest currentLocationQuest = player.CurrentLocation.QuestAvailableHere;
+                if (currentLocationQuest != null && !currentLocationQuest.Completed)
+                {
+                    currentLocationQuest.Complete();
+                }
+
             }
             else
             {
